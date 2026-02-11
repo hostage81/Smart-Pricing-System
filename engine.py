@@ -19,8 +19,10 @@ class PricingEngine:
 
     def calculate_smart_price(self, width, height, system_name, glass_name, quantity):
         area_per_unit = (width / 100) * (height / 100)
+        # جلب بيانات النظام أو الرجوع للستاندرد كخيار افتراضي
         system_data = self.systems.get(system_name, self.systems["ألوبكو ستاندرد (اقتصادي)"])
         
+        # حساب سعر المتر المربع
         price_m2_base = system_data["price_m2"] + self.glass_options.get(glass_name, 0)
         
         unit_price_net = area_per_unit * price_m2_base
@@ -29,6 +31,7 @@ class PricingEngine:
         vat = total_net * 0.15
         grand_total = total_net + vat
         
+        # أهم جزء: إرجاع price_m2 لكي لا يحدث الخطأ في app.py
         return {
             "price_m2": price_m2_base,
             "hardware": system_data["hardware"],
