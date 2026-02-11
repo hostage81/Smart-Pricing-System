@@ -23,7 +23,7 @@ st.markdown("""
 
 # 3. القائمة الجانبية (Sidebar) - هنا تقع قوة التصميم للجوال
 with st.sidebar:
-    st.image("https://via.placeholder.com/150?text=AL-MASKAN", use_container_width=True) # يمكنك استبداله برابط لوغو المصنع
+    st.image("logo.png", use_container_width=True) # يمكنك استبداله برابط لوغو المصنع
     st.header("⚙️ مدخلات المشروع")
     
     unit_type = st.selectbox("نوع البند", ["شباك سحاب", "شباك مفصلي", "باب", "واجهة استركشر", "ثابت"])
@@ -87,3 +87,4 @@ if st.session_state.quotation_list:
         st.rerun()
 else:
     st.warning("أهلاً بك.. القائمة فارغة حالياً. استخدم القائمة الجانبية (على اليمين أو من زر السهم في أعلى اليسار بالجوال) لإضافة البنود.")
+
